@@ -13,10 +13,33 @@
   gsap.ticker.lagSmoothing(0);
 
   const nav = document.querySelector('.site-nav');
+
   ScrollTrigger.create({
     trigger: '#problem',
     start: 'top 80%',
     onEnter: () => nav.classList.add('is-visible'),
     onLeaveBack: () => nav.classList.remove('is-visible'),
   });
+})();
+
+// === SECTION 1: HERO ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.timeline({ defaults: { ease: 'power2.out' } })
+      .to('.hero__logo',     { opacity: 1, duration: 0.8 }, 0.3)
+      .to('.hero__eyebrow',  { opacity: 1, duration: 0.6 }, 0.7)
+      .to('.hero__headline', { opacity: 1, duration: 1.0 }, 0.9);
+
+    gsap.to('.hero__bg', {
+      scale: 1.12,
+      yPercent: 5,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }
 })();
