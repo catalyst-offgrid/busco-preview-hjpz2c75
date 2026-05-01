@@ -119,8 +119,9 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   gap: 1.5rem;
   padding: 0 5vw;
+  margin-top: -110px;
 }
-.hero__logo { height: 56px; width: auto; opacity: 0; align-self: flex-start; }
+.hero__logo { height: 200px; width: auto; opacity: 0; align-self: flex-start; }
 .hero__eyebrow {
   font-size: 0.95rem;
   letter-spacing: 0.18em;
@@ -134,7 +135,7 @@ img { max-width: 100%; display: block; }
 }
 .hero__cue {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 0.25rem;
   left: 5vw;
   display: flex;
   align-items: center;
