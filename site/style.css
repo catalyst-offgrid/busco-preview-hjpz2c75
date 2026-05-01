@@ -210,3 +210,58 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .problem__card { opacity: 1; transform: none; }
 }
+
+/* === SECTION 3: SOLUTION === */
+.section--solution { min-height: 200vh; align-items: stretch; padding: 0; }
+.solution__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 3rem 4rem;
+  padding: var(--section-pad-y) 5vw;
+  align-items: center;
+}
+.solution__intro { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; gap: 1rem; }
+.eyebrow--warm { color: var(--color-warm-soft); }
+.solution__lede { color: rgba(247,244,238,0.82); }
+
+.safety-net {
+  grid-column: 2; grid-row: 1 / span 2;
+  position: relative; height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+.safety-net__layer {
+  position: absolute; left: 50%; top: 50%;
+  border: 2px solid var(--color-warm);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  display: flex; align-items: flex-end; justify-content: center;
+  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-warm-soft); padding-bottom: 0.5rem;
+}
+.safety-net__layer::before { content: attr(data-label); }
+.safety-net__layer--1 { width: 140px; height: 140px; border-color: var(--color-warm); }
+.safety-net__layer--2 { width: 240px; height: 240px; border-color: rgba(160,124,79,0.6); }
+.safety-net__layer--3 { width: 340px; height: 340px; border-color: rgba(160,124,79,0.3); }
+.safety-net__caption {
+  position: absolute; bottom: -3rem; left: 0; right: 0;
+  text-align: center; font-size: 0.9rem; color: var(--color-warm-soft);
+  letter-spacing: 0.05em; opacity: 0;
+}
+
+.solution__benefits {
+  grid-column: 1; grid-row: 2;
+  list-style: none; display: flex; flex-direction: column; gap: 0.75rem;
+  font-size: 1.02rem; color: var(--color-cream);
+}
+.solution__benefits li { padding-left: 1.25rem; position: relative; opacity: 0; }
+.solution__benefits li::before {
+  content: ''; position: absolute; left: 0; top: 0.65em;
+  width: 6px; height: 6px; background: var(--color-warm); border-radius: 50%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .safety-net__layer { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .safety-net__caption { opacity: 1; }
+  .solution__benefits li { opacity: 1; }
+}

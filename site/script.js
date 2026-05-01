@@ -22,6 +22,27 @@
   });
 })();
 
+// === SECTION 3: SOLUTION ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.set('.safety-net__layer', { scale: 0.6 });
+
+    gsap.timeline({
+      scrollTrigger: { trigger: '#solution', start: 'top 60%', toggleActions: 'play none none reverse' },
+      defaults: { duration: 0.8, ease: 'power3.out' },
+    })
+      .to('.safety-net__layer--3', { opacity: 1, scale: 1 })
+      .to('.safety-net__layer--2', { opacity: 1, scale: 1 }, '-=0.5')
+      .to('.safety-net__layer--1', { opacity: 1, scale: 1 }, '-=0.5')
+      .to('.safety-net__caption',  { opacity: 1 }, '-=0.3');
+
+    gsap.to('.solution__benefits li', {
+      opacity: 1, stagger: 0.12, duration: 0.5, ease: 'power2.out',
+      scrollTrigger: { trigger: '.solution__benefits', start: 'top 80%', toggleActions: 'play none none reverse' },
+    });
+  }
+})();
+
 // === SECTION 2: PROBLEM ===
 (function() {
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
