@@ -22,6 +22,28 @@
   });
 })();
 
+// === SECTION 4: STAT ===
+(function() {
+  const num = document.querySelector('.stat__number');
+  const target = Number(num.dataset.target);
+  const counter = { val: 0 };
+  ScrollTrigger.create({
+    trigger: '#stat',
+    start: 'top 60%',
+    onEnter: () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        num.textContent = target;
+        return;
+      }
+      gsap.to(counter, {
+        val: target, duration: 1.4, ease: 'power2.out',
+        onUpdate: () => { num.textContent = Math.round(counter.val); },
+      });
+    },
+    onLeaveBack: () => { counter.val = 0; num.textContent = '0'; },
+  });
+})();
+
 // === SECTION 3: SOLUTION ===
 (function() {
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
