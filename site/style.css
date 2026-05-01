@@ -154,3 +154,59 @@ img { max-width: 100%; display: block; }
   .hero__logo, .hero__eyebrow, .hero__headline { opacity: 1; }
   .hero__cue { animation: none; }
 }
+
+/* === SECTION 2: THE PROBLEM === */
+.section--problem {
+  align-items: stretch;
+  padding: 0;
+  min-height: 250vh;
+}
+.problem__inner {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.3fr);
+  gap: 4rem;
+  align-items: start;
+  padding: var(--section-pad-y) 5vw;
+}
+.problem__intro {
+  position: sticky;
+  top: 20vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-warm);
+  font-weight: 600;
+}
+.problem__lede { color: var(--color-muted); max-width: 30ch; }
+.problem__cards { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.problem__card {
+  background: #fff;
+  border-left: 4px solid var(--color-warm);
+  padding: 1.5rem 1.75rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px -16px rgba(3,31,81,0.2);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+}
+.problem__card-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--color-warm);
+  grid-row: span 2;
+  align-self: start;
+}
+.problem__card h3 { color: var(--color-navy); }
+.problem__card p  { color: var(--color-ink); font-size: 0.98rem; }
+@media (prefers-reduced-motion: reduce) {
+  .problem__card { opacity: 1; transform: none; }
+}
