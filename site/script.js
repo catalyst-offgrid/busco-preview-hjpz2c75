@@ -145,3 +145,61 @@
     });
   }
 })();
+
+// === SECTION 7: PRINCIPLES ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.to('.principle', {
+      opacity: 1, y: 0, stagger: { each: 0.1, from: 'start' }, duration: 0.6, ease: 'power2.out',
+      scrollTrigger: { trigger: '.principles__grid', start: 'top 75%', toggleActions: 'play none none reverse' },
+    });
+  }
+})();
+
+// === SECTION 8: CAPABILITIES ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.to('.hex', {
+      opacity: 1, scale: 1, stagger: { each: 0.07, from: 'start' }, duration: 0.5, ease: 'back.out(1.4)',
+      scrollTrigger: { trigger: '.hex-grid', start: 'top 75%', toggleActions: 'play none none reverse' },
+    });
+  }
+
+  gsap.utils.toArray('.hex').forEach((hex) => {
+    const face = hex.querySelector('.hex__face');
+    face.addEventListener('click', () => {
+      const isOpen = hex.classList.toggle('is-open');
+      face.setAttribute('aria-expanded', String(isOpen));
+      gsap.utils.toArray('.hex').forEach((other) => {
+        if (other !== hex) {
+          other.classList.remove('is-open');
+          other.querySelector('.hex__face').setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+})();
+
+// === SECTION 9: TEAM ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.to('.team__card', {
+      opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out',
+      scrollTrigger: { trigger: '.team__grid', start: 'top 80%', toggleActions: 'play none none reverse' },
+    });
+  }
+})();
+
+// === SECTION 10: CTA ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.from('.cta__steps li', {
+      opacity: 0, y: 30, stagger: 0.12, duration: 0.6, ease: 'power2.out',
+      scrollTrigger: { trigger: '.cta__steps', start: 'top 80%', toggleActions: 'play none none reverse' },
+    });
+    gsap.from('.cta__email', {
+      opacity: 0, y: 20, stagger: 0.1, duration: 0.5, ease: 'power2.out',
+      scrollTrigger: { trigger: '.cta__contacts', start: 'top 85%', toggleActions: 'play none none reverse' },
+    });
+  }
+})();
