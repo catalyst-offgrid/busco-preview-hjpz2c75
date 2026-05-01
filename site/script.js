@@ -1,0 +1,1 @@
+// script.js — populated in subsequent tasks
