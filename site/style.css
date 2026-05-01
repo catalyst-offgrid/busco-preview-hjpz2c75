@@ -284,3 +284,47 @@ img { max-width: 100%; display: block; }
 .stat__currency { color: var(--color-warm); font-size: 0.6em; }
 .stat__unit     { color: var(--color-warm); font-size: 0.55em; }
 .stat__caption  { max-width: 48ch; color: var(--color-cream); opacity: 0.85; font-size: 1.05rem; }
+
+/* === SECTION 5: HOW THE BUS WORKS === */
+.section--how { padding: 0; min-height: 600vh; align-items: stretch; }
+.how__pin {
+  height: 100vh; height: 100svh;
+  display: flex; align-items: center; padding: 5vh 5vw;
+}
+.how__container { display: grid; grid-template-rows: auto auto 1fr; gap: 2.5rem; height: 100%; align-content: start; }
+.how__header { display: flex; flex-direction: column; gap: 0.75rem; }
+.how__header h2 { color: var(--color-navy); }
+
+.how__phases {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; position: relative; padding-bottom: 1rem;
+}
+.how__phase {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding-bottom: 0.75rem; opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+.how__phase.is-active { opacity: 1; }
+.how__phase-label {
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-warm); font-weight: 600;
+}
+.how__phase-name { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; color: var(--color-navy); }
+.how__progress {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 3px; background: rgba(3,31,81,0.1); border-radius: 2px; overflow: hidden;
+  grid-column: 1 / -1;
+}
+.how__progress-fill { height: 100%; width: 0%; background: var(--color-warm); transition: width 0.1s linear; }
+
+.how__steps { position: relative; min-height: 200px; }
+.how__step {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  max-width: var(--content-max); opacity: 0;
+  transform: translateY(20px); pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.how__step.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.how__step h3 { color: var(--color-navy); }
+.how__step p  { color: var(--color-ink); max-width: 60ch; }

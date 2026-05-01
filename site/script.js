@@ -22,6 +22,41 @@
   });
 })();
 
+// === SECTION 5: HOW THE BUS WORKS ===
+(function() {
+  const section = document.querySelector('#how');
+  const pin = section.querySelector('.how__pin');
+  const steps = gsap.utils.toArray('.how__step');
+  const phases = gsap.utils.toArray('.how__phase');
+  const progressFill = section.querySelector('.how__progress-fill');
+  const totalSteps = steps.length;
+
+  function activate(stepIdx) {
+    steps.forEach((s, i) => s.classList.toggle('is-active', i === stepIdx));
+    const activePhase = Number(steps[stepIdx].dataset.phase);
+    phases.forEach((p, i) => p.classList.toggle('is-active', i <= activePhase));
+  }
+  activate(0);
+
+  if (window.matchMedia('(min-width: 641px)').matches) {
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: 'bottom bottom',
+      pin: pin,
+      pinSpacing: false,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        progressFill.style.width = `${progress * 100}%`;
+        const idx = Math.min(totalSteps - 1, Math.floor(progress * totalSteps));
+        activate(idx);
+      },
+    });
+  } else {
+    steps.forEach((s) => s.classList.add('is-active'));
+  }
+})();
+
 // === SECTION 4: STAT ===
 (function() {
   const num = document.querySelector('.stat__number');
