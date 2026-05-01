@@ -552,3 +552,17 @@ img { max-width: 100%; display: block; }
   .how__steps { min-height: auto; }
   .how__phases { display: none; }
 }
+
+/* === REDUCED MOTION: visibility fallbacks === */
+@media (prefers-reduced-motion: reduce) {
+  .hero__logo, .hero__eyebrow, .hero__headline { opacity: 1; }
+  .problem__card { opacity: 1; transform: none; }
+  .safety-net__layer { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .safety-net__caption { opacity: 1; }
+  .solution__benefits li { opacity: 1; }
+  .usecase { opacity: 1; transform: none; }
+  .principle { opacity: 1; transform: none; }
+  .hex { opacity: 1; transform: none; }
+  .team__card { opacity: 1; transform: none; }
+  .how__step { opacity: 1; transform: none; }
+}
