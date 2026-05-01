@@ -15,8 +15,94 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <style>
+  .lock-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #F7F4EE;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lock-screen.is-hidden { display: none; }
+  .lock-screen__box {
+    display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+    background: #fff; padding: 3rem 2.5rem; border-radius: 8px;
+    box-shadow: 0 8px 40px -12px rgba(3,31,81,0.18);
+    width: 100%; max-width: 360px;
+  }
+  .lock-screen__logo { height: 40px; width: auto; }
+  .lock-screen__label { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #6B6B6B; }
+  .lock-screen__form { display: flex; gap: 0.5rem; width: 100%; }
+  .lock-screen__input {
+    flex: 1; padding: 0.65rem 1rem; border: 1.5px solid rgba(3,31,81,0.2);
+    border-radius: 4px; font-size: 1rem; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .lock-screen__input:focus { border-color: #031F51; }
+  .lock-screen__input.is-error { border-color: #c0392b; animation: shake 0.4s ease; }
+  .lock-screen__btn {
+    padding: 0.65rem 1.25rem; background: #031F51; color: #F7F4EE;
+    border: none; border-radius: 4px; font-size: 0.95rem;
+    font-family: 'Inter', sans-serif; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lock-screen__btn:hover { background: #A07C4F; }
+  .lock-screen__error { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #c0392b; min-height: 1.2em; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+  }
+  </style>
 </head>
 <body>
+<div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-label="Site access">
+  <div class="lock-screen__box">
+    <img src="assets/logo-navy.png" alt="BUSco" class="lock-screen__logo">
+    <p class="lock-screen__label">Enter password to continue</p>
+    <form class="lock-screen__form" id="lock-form" autocomplete="off">
+      <input
+        type="password"
+        id="lock-input"
+        class="lock-screen__input"
+        placeholder="Password"
+        aria-label="Password"
+        autofocus
+      >
+      <button type="submit" class="lock-screen__btn">Enter</button>
+    </form>
+    <p class="lock-screen__error" id="lock-error" aria-live="polite"></p>
+  </div>
+</div>
+<script>
+  (function() {
+    var lock = document.getElementById('lock-screen');
+    var form = document.getElementById('lock-form');
+    var input = document.getElementById('lock-input');
+    var error = document.getElementById('lock-error');
+    var PWD = 'getondabus';
+
+    if (sessionStorage.getItem('busco-auth') === '1') {
+      lock.classList.add('is-hidden');
+      return;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value === PWD) {
+        sessionStorage.setItem('busco-auth', '1');
+        lock.classList.add('is-hidden');
+        input.value = '';
+        error.textContent = '';
+      } else {
+        error.textContent = 'Incorrect password. Try again.';
+        input.classList.add('is-error');
+        input.select();
+        setTimeout(function() { input.classList.remove('is-error'); }, 500);
+      }
+    });
+  })();
+</script>
   <header class="site-nav">
     <img src="assets/logo-white.png" alt="BUSco" class="site-nav__logo">
   </header>
