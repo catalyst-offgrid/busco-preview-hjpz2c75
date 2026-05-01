@@ -22,6 +22,18 @@
   });
 })();
 
+// === SECTION 6: USE CASES ===
+(function() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.utils.toArray('.usecase').forEach((card, i) => {
+      gsap.to(card, {
+        opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: 'power2.out',
+        scrollTrigger: { trigger: card, start: 'top 80%', toggleActions: 'play none none reverse' },
+      });
+    });
+  }
+})();
+
 // === SECTION 5: HOW THE BUS WORKS ===
 (function() {
   const section = document.querySelector('#how');
