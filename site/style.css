@@ -506,3 +506,49 @@ img { max-width: 100%; display: block; }
 }
 .cta__email strong { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; display: block; }
 .cta__email:hover { transform: translateY(-2px); background: var(--color-warm-soft); }
+
+/* === RESPONSIVE === */
+
+/* Tablet: ≤ 960px */
+@media (max-width: 960px) {
+  .problem__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .problem__intro { position: static; }
+  .solution__inner { grid-template-columns: 1fr; }
+  .safety-net { grid-column: 1; height: 280px; }
+  .safety-net__layer--3 { width: 260px; height: 260px; }
+  .safety-net__layer--2 { width: 180px; height: 180px; }
+  .safety-net__layer--1 { width: 100px; height: 100px; }
+  .usecases__grid,
+  .usecases__frontier-grid,
+  .team__grid { grid-template-columns: 1fr; }
+  .principles__grid { grid-template-columns: 1fr 1fr; }
+  .hex-grid { grid-template-columns: repeat(3, 1fr); }
+  .cta__steps { grid-template-columns: 1fr 1fr; }
+  .cta__contacts { grid-template-columns: 1fr; }
+  .how__phases { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .how__phase-name { font-size: 1.15rem; }
+}
+
+/* Mobile: ≤ 640px */
+@media (max-width: 640px) {
+  .section { padding: var(--section-pad-y) 6vw; }
+  .principles__grid { grid-template-columns: 1fr; }
+  .hex-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .hex__face { font-size: 0.85rem; padding: 1rem 0.75rem; }
+  .hex__detail { width: 240px; font-size: 0.85rem; }
+  .cta__steps { grid-template-columns: 1fr; }
+  .cta__contacts { grid-template-columns: 1fr; }
+  .stat__big { font-size: clamp(4rem, 22vw, 8rem); }
+  .hero__cue { font-size: 0.75rem; }
+
+  /* Timeline: disable pinning on mobile, stack steps instead */
+  .section--how { min-height: auto; }
+  .how__pin { height: auto; height: auto; padding: var(--section-pad-y) 6vw; }
+  .how__step {
+    position: static;
+    opacity: 1; transform: none; pointer-events: auto;
+    margin-bottom: 2rem;
+  }
+  .how__steps { min-height: auto; }
+  .how__phases { display: none; }
+}
