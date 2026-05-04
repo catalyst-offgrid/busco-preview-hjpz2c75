@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="BUSco — an industry-wide back-up servicer for off-grid solar.">
+  <title>BUSCO_v3.0.0 — Industry-wide back-up servicer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-label="Site access">
+  <div class="lock-screen__scanlines"></div>
+  <div class="lock-screen__box">
+    <div class="lock-screen__hud-top">
+      <span class="lock-screen__hud-dot">●</span>
+      <span class="lock-screen__hud-label">BUSCO_v3.0.0 // SECURE_ACCESS</span>
+    </div>
+    <img src="../assets/logo-white.png" alt="BUSco" class="lock-screen__logo">
+    <p class="lock-screen__label">// enter_credentials to continue</p>
+    <form class="lock-screen__form" id="lock-form" autocomplete="off">
+      <input
+        type="password"
+        id="lock-input"
+        class="lock-screen__input"
+        placeholder="_ _ _ _ _ _ _ _ _ _"
+        aria-label="Password"
+        autofocus
+      >
+      <button type="submit" class="lock-screen__btn">[ ACCESS ]</button>
+    </form>
+    <p class="lock-screen__error" id="lock-error" aria-live="polite"></p>
+    <div class="lock-screen__hud-bottom">[2026.05.04 — 14:23:12 UTC] · ENCRYPTED CHANNEL · TLS 1.3</div>
+  </div>
+</div>
+<script>
+  (function() {
+    var lock = document.getElementById('lock-screen');
+    var form = document.getElementById('lock-form');
+    var input = document.getElementById('lock-input');
+    var error = document.getElementById('lock-error');
+    var PWD = 'getondabus';
+    if (sessionStorage.getItem('busco-auth') === '1') {
+      lock.classList.add('is-hidden');
+      return;
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (input.value === PWD) {
+        sessionStorage.setItem('busco-auth', '1');
+        lock.classList.add('is-unlocking');
+        setTimeout(function() { lock.classList.add('is-hidden'); }, 600);
+        input.value = '';
+        error.textContent = '';
+      } else {
+        error.textContent = '// ACCESS_DENIED — invalid credentials';
+        input.classList.add('is-error');
+        input.select();
+        setTimeout(function() { input.classList.remove('is-error'); }, 500);
+      }
+    });
+  })();
+</script>
+
+<!-- MESH BACKGROUND -->
+<div class="mesh-bg" aria-hidden="true">
+  <div class="mesh-bg__blob mesh-bg__blob--1"></div>
+  <div class="mesh-bg__blob mesh-bg__blob--2"></div>
+  <div class="mesh-bg__blob mesh-bg__blob--3"></div>
+</div>
+<div class="grid-floor" aria-hidden="true"></div>
+
+<!-- CURSOR FOLLOWER -->
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+<!-- PAGINATION INDICATOR -->
+<div class="pagination-hud" id="pagination-hud" aria-hidden="true">
+  <span class="pagination-hud__label">[<span id="pagination-current">01</span> / 10]</span>
+</div>
+
+<!-- MAIN SITE -->
+<main id="site-main">
+
+  <!-- SECTION 1: HERO / BOOT -->
+  <section id="hero" class="section section--hero" data-section="1">
+    <div class="hud-bar hud-bar--top">
+      <div class="hud-bar__left">
+        <span class="status-dot status-dot--live">●</span>
+        <span class="hud-label">BUSCO_v3.0.0</span>
+        <span class="hud-sep">|</span>
+        <span class="hud-label hud-label--dim">● ONLINE</span>
+      </div>
+      <div class="hud-bar__right">
+        <span class="hud-label hud-label--dim">[2026.05.04 — 14:23:12 UTC]</span>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__typing-line" id="hero-typing" aria-hidden="true">
+        <span class="hero__prompt">&gt;&nbsp;</span><span class="hero__typed"></span><span class="hero__cursor">█</span>
+      </div>
+      <h1 class="hero__headline" id="hero-headline">
+        AN INDUSTRY-WIDE BACK-UP SERVICER FOR OFF-GRID SOLAR.
+      </h1>
+      <p class="hero__subline">// continuity infrastructure for the PAYGo industry</p>
+    </div>
+
+    <div class="hero__cue" aria-label="Scroll to continue">
+      <span class="hero__cue-text">[scroll to deploy ↓]</span>
+    </div>
+  </section>
+
+  <!-- SECTION 2: VULNERABILITY MAP -->
+  <section id="vulnerability" class="section section--vulnerability" data-section="2">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[01]</span>
+        <span class="tag-label">// THE VULNERABILITY MAP</span>
+      </div>
+      <h2 class="section__headline">WHEN A PAYGO COMPANY FAILS, FIVE SYSTEMS FAIL TOGETHER.</h2>
+
+      <div class="node-graph" id="node-graph" aria-label="Interconnected failure nodes">
+        <!-- SVG lines between nodes -->
+        <svg class="node-graph__svg" id="node-svg" aria-hidden="true" viewBox="0 0 700 480" preserveAspectRatio="xMidYMid meet">
+          <!-- Lines will be drawn by JS, but we include static paths too -->
+          <line class="node-line" id="line-0-1" x1="350" y1="130" x2="180" y2="260" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-0-2" x1="350" y1="130" x2="520" y2="260" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-1-3" x1="180" y1="260" x2="240" y2="390" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-2-4" x1="520" y1="260" x2="460" y2="390" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-1-4" x1="180" y1="260" x2="460" y2="390" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-2-3" x1="520" y1="260" x2="240" y2="390" stroke="#00FFE5" stroke-width="1"/>
+          <line class="node-line" id="line-3-4" x1="240" y1="390" x2="460" y2="390" stroke="#00FFE5" stroke-width="1"/>
+        </svg>
+
+        <!-- Node cards positioned with CSS -->
+        <div class="node" id="node-0" data-index="0" style="--nx: 50%; --ny: 15%">
+          <div class="node__card">
+            <span class="node__status">●</span>
+            <span class="node__id">node.companies</span>
+            <p class="node__desc">No restructuring path</p>
+          </div>
+        </div>
+        <div class="node" id="node-1" data-index="1" style="--nx: 20%; --ny: 45%">
+          <div class="node__card">
+            <span class="node__status">●</span>
+            <span class="node__id">node.customers</span>
+            <p class="node__desc">Energy access stripped</p>
+          </div>
+        </div>
+        <div class="node" id="node-2" data-index="2" style="--nx: 80%; --ny: 45%">
+          <div class="node__card">
+            <span class="node__status">●</span>
+            <span class="node__id">node.lenders</span>
+            <p class="node__desc">Cash flow severed</p>
+          </div>
+        </div>
+        <div class="node" id="node-3" data-index="3" style="--nx: 32%; --ny: 78%">
+          <div class="node__card">
+            <span class="node__status">●</span>
+            <span class="node__id">node.capital</span>
+            <p class="node__desc">Default risk blocks scale</p>
+          </div>
+        </div>
+        <div class="node" id="node-4" data-index="4" style="--nx: 68%; --ny: 78%">
+          <div class="node__card">
+            <span class="node__status">●</span>
+            <span class="node__id">node.governments</span>
+            <p class="node__desc">Electrification compromised</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SOLUTION -->
+  <section id="solution" class="section section--solution" data-section="3">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[02]</span>
+        <span class="tag-label">// SAFETY_NET.INIT()</span>
+      </div>
+      <h2 class="section__headline">BUSCO. THE NEUTRAL PAN-AFRICAN BACK-UP SERVICER.</h2>
+
+      <div class="terminal" id="solution-terminal">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--r"></span>
+          <span class="terminal__dot terminal__dot--y"></span>
+          <span class="terminal__dot terminal__dot--g"></span>
+          <span class="terminal__title">busco_safety_net.sh</span>
+        </div>
+        <div class="terminal__body">
+          <div class="terminal__line" data-line="0">
+            <span class="terminal__prompt">$&nbsp;</span>
+            <span class="terminal__cmd">init --target=cash_flow</span>
+          </div>
+          <div class="terminal__line terminal__line--output" data-line="1">
+            <span class="terminal__prefix">&gt;&nbsp;</span>protecting cash_flow <span class="terminal__dots">...................</span> <span class="terminal__ok">[OK]</span>
+          </div>
+          <div class="terminal__line" data-line="2">
+            <span class="terminal__prompt">$&nbsp;</span>
+            <span class="terminal__cmd">init --target=devices</span>
+          </div>
+          <div class="terminal__line terminal__line--output" data-line="3">
+            <span class="terminal__prefix">&gt;&nbsp;</span>protecting devices <span class="terminal__dots">....................</span> <span class="terminal__ok">[OK]</span>
+          </div>
+          <div class="terminal__line" data-line="4">
+            <span class="terminal__prompt">$&nbsp;</span>
+            <span class="terminal__cmd">init --target=field_operations</span>
+          </div>
+          <div class="terminal__line terminal__line--output" data-line="5">
+            <span class="terminal__prefix">&gt;&nbsp;</span>protecting field_operations <span class="terminal__dots">.............</span> <span class="terminal__ok">[OK]</span>
+          </div>
+          <div class="terminal__line terminal__line--success" data-line="6">
+            <span class="terminal__prefix">&gt;&nbsp;</span><span class="terminal__success">SAFETY NET ACTIVE — all systems protected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: STAT / BIG NUMBER -->
+  <section id="stat" class="section section--stat" data-section="4">
+    <div class="section__container section__container--centered">
+      <div class="section__tag">
+        <span class="tag-num">[03]</span>
+        <span class="tag-label">// TRACK_RECORD</span>
+      </div>
+      <div class="stat__number" id="stat-number" aria-label="20 billion dollars plus">
+        <span class="stat__dollar">$</span><span class="stat__digits" id="stat-digits">20.000</span><span class="stat__suffix">B+</span>
+      </div>
+      <p class="stat__caption">solar loans backstopped by BUS structures · originated by hyfin founding team · north america</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: HOW IT WORKS / PINNED DASHBOARD -->
+  <section id="how" class="section section--how" data-section="5">
+    <div class="how__scroller" id="how-scroller">
+      <div class="how__sticky" id="how-sticky">
+        <div class="section__container">
+          <div class="section__tag">
+            <span class="tag-num">[04]</span>
+            <span class="tag-label">// MECHANICS</span>
+          </div>
+          <h2 class="section__headline">THE OPERATIONAL TIMELINE.</h2>
+
+          <div class="dashboard" id="dashboard">
+            <div class="dashboard__phases">
+              <div class="dashboard__phase" data-phase-dot="0">●</div>
+              <div class="dashboard__phase" data-phase-dot="1">○</div>
+              <div class="dashboard__phase" data-phase-dot="2">○</div>
+              <div class="dashboard__phase" data-phase-dot="3">○</div>
+            </div>
+            <div class="dashboard__status" id="dashboard-status">
+              <div class="dashboard__status-line">
+                <span class="dashboard__status-label">STATUS:</span>
+                <span class="dashboard__status-val" id="dashboard-val">STANDBY</span>
+              </div>
+              <p class="dashboard__status-desc" id="dashboard-desc">Triggers, mandates, step-in rights defined. Data pipelines validated.</p>
+            </div>
+            <div class="dashboard__grid">
+              <div class="dashboard__step" data-step="0">
+                <div class="dashboard__step-indicator" id="step-ind-0">[ STANDBY ]</div>
+                <p class="dashboard__step-text">Pre-succession phase — structures in place, monitoring active.</p>
+              </div>
+              <div class="dashboard__step" data-step="1">
+                <div class="dashboard__step-indicator" id="step-ind-1">[ TRANSITION ]</div>
+                <p class="dashboard__step-text">Trigger invoked — insolvency, covenant breach, PAR threshold exceeded.</p>
+              </div>
+              <div class="dashboard__step" data-step="2">
+                <div class="dashboard__step-indicator" id="step-ind-2">[ ACTIVE ]</div>
+                <p class="dashboard__step-text">Full control: data, payments, field operations, call centre.</p>
+              </div>
+              <div class="dashboard__step" data-step="3">
+                <div class="dashboard__step-indicator" id="step-ind-3">[ REVERSION ]</div>
+                <p class="dashboard__step-text">Portfolio handed back, transferred, or wound down orderly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: USE CASES -->
+  <section id="usecases" class="section section--usecases" data-section="6">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[05]</span>
+        <span class="tag-label">// DEPLOYMENT_MODES</span>
+      </div>
+
+      <div class="modes-grid">
+        <article class="mode-card mode-card--a">
+          <div class="mode-card__border"></div>
+          <div class="mode-card__inner">
+            <div class="mode-card__tag">MODE_A</div>
+            <h3 class="mode-card__title">ON-BALANCE-SHEET</h3>
+            <p class="mode-card__body">Conventional structures. DFIs, impact investors, regional development banks. BUS as lender cushion — protection layer for underperformance or operational standstill.</p>
+          </div>
+        </article>
+        <article class="mode-card mode-card--b">
+          <div class="mode-card__border"></div>
+          <div class="mode-card__inner">
+            <div class="mode-card__tag">MODE_B</div>
+            <h3 class="mode-card__title">SECURITIZATION</h3>
+            <p class="mode-card__body">The path to scale. Off-balance-sheet SPVs. Bankability prerequisite for institutional investors. Securitizing receivables, managing SPV-specific risks.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="frontier-badges">
+        <div class="frontier-badge">[FRONTIER] M300 / GOVERNMENT-FINANCED</div>
+        <div class="frontier-badge">[FRONTIER] ENERGY AS A SERVICE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: PRINCIPLES -->
+  <section id="principles" class="section section--principles" data-section="7">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[06]</span>
+        <span class="tag-label">// PRINCIPLES</span>
+      </div>
+      <h2 class="section__headline">SIX OPERATING PRINCIPLES.</h2>
+
+      <div class="principles-grid">
+        <div class="principle-card" data-principle="0">
+          <div class="principle-card__num">01</div>
+          <h3 class="principle-card__title">Robust capability, minimized cost</h3>
+          <p class="principle-card__body">Professional-grade back-up servicing with strong value for money for investors and operators alike.</p>
+        </div>
+        <div class="principle-card" data-principle="1">
+          <div class="principle-card__num">02</div>
+          <h3 class="principle-card__title">Leverage existing infrastructure</h3>
+          <p class="principle-card__body">Harmonized with established CRM platforms, third-party call centres, and existing field networks wherever possible.</p>
+        </div>
+        <div class="principle-card" data-principle="2">
+          <div class="principle-card__num">03</div>
+          <h3 class="principle-card__title">Universal trust through neutrality</h3>
+          <p class="principle-card__body">Structured as a social enterprise with clear roles, responsibilities, and triggers agreed upfront with all partners.</p>
+        </div>
+        <div class="principle-card" data-principle="3">
+          <div class="principle-card__num">04</div>
+          <h3 class="principle-card__title">Built for the sector</h3>
+          <p class="principle-card__body">Standards, protocols, partnerships, and governance shaped together — before any crisis strikes.</p>
+        </div>
+        <div class="principle-card" data-principle="4">
+          <div class="principle-card__num">05</div>
+          <h3 class="principle-card__title">Investment-grade credibility</h3>
+          <p class="principle-card__body">Functions as investor insurance — securing payment continuity and preserving asset value during crisis.</p>
+        </div>
+        <div class="principle-card" data-principle="5">
+          <div class="principle-card__num">06</div>
+          <h3 class="principle-card__title">Lean start-up approach</h3>
+          <p class="principle-card__body">Front-loaded work to test critical assumptions — stakeholder acceptance, viability, regulatory barriers — before scaling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CAPABILITY MESH -->
+  <section id="capabilities" class="section section--capabilities" data-section="8">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[07]</span>
+        <span class="tag-label">// CAPABILITY_MESH</span>
+      </div>
+      <h2 class="section__headline">SEVEN DOMAINS. ONE INTEGRATED STACK.</h2>
+
+      <div class="hex-mesh" id="hex-mesh" role="list">
+        <div class="hex-wrap" data-domain="data" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-data">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">PORTFOLIO<br>&amp; DATA</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-data" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Customer &amp; loan datasets</li>
+              <li>Real-time API access</li>
+              <li>Early warning analytics</li>
+              <li>Reporting templates</li>
+              <li>Fraud / tamper detection</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="software" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-software">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">SOFTWARE<br>&amp; DIGITAL</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-software" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Device lock / unlock control</li>
+              <li>Token / service continuity</li>
+              <li>Customer account re-hosting</li>
+              <li>Omnichannel communications</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="financial" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-financial">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">FINANCIAL<br>&amp; PAYMENT</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-financial" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Wallet rerouting</li>
+              <li>Mobile money integration</li>
+              <li>Automated reconciliation</li>
+              <li>Cash waterfall management</li>
+              <li>Multi-currency support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="hardware" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-hardware">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">HARDWARE<br>&amp; ASSETS</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-hardware" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Master key management</li>
+              <li>Inventory management</li>
+              <li>Logistics &amp; distribution</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="legal" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-legal">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">LEGAL<br>&amp; COMPLIANCE</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-legal" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Back-Up Servicing Agreement</li>
+              <li>Pre-negotiated step-in rights</li>
+              <li>Data portability agreements</li>
+              <li>Novation rights</li>
+              <li>Jurisdictional compliance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="governance" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-governance">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">GOVERNANCE<br>&amp; MANAGEMENT</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-governance" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Operations management team</li>
+              <li>Documented SOPs</li>
+              <li>KPI monitoring</li>
+              <li>Vendor oversight</li>
+              <li>Stakeholder communication</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hex-wrap" data-domain="field" role="listitem">
+          <button class="hex-cell" type="button" aria-expanded="false" aria-controls="hex-detail-field">
+            <svg class="hex-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <polygon class="hex-poly" points="50,2 98,27 98,88 50,113 2,88 2,27"/>
+            </svg>
+            <span class="hex-label">FIELD<br>&amp; SUPPORT</span>
+          </button>
+          <div class="hex-detail" id="hex-detail-field" role="tooltip" aria-hidden="true">
+            <ul>
+              <li>Local-language call centres</li>
+              <li>Technician network</li>
+              <li>Field collections</li>
+              <li>Agent absorption protocols</li>
+              <li>Warranty fulfillment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: TEAM -->
+  <section id="team" class="section section--team" data-section="9">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[08]</span>
+        <span class="tag-label">// THE_TEAM</span>
+      </div>
+      <h2 class="section__headline">THE OPERATORS.</h2>
+
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-card__top-border"></div>
+          <div class="team-card__inner">
+            <div class="team-card__status"><span class="status-dot status-dot--live">●</span> CATALYST_OFF_GRID_ADVISORS</div>
+            <p class="team-card__role">// Driving technical design</p>
+            <p class="team-card__body">Most substantive PAYGo BUS scoping work to date. Practitioner lens from the PAYGo industry — diligence of incumbent instruments completed 2025.</p>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-card__top-border"></div>
+          <div class="team-card__inner">
+            <div class="team-card__status"><span class="status-dot status-dot--live">●</span> HYFIN</div>
+            <p class="team-card__role">// Co-developing alongside Catalyst</p>
+            <p class="team-card__body">Founding team pioneered $20B+ in solar securitization in North America. Deep knowledge of commercial investor expectations and bankable structures.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="backers-strip">
+        <span class="backers-strip__label">[BACKERS]</span>
+        <span class="backers-strip__note">// institutional backers supporting BUSco — mobilized capital underscores investor demand</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: CTA / DEPLOY -->
+  <section id="cta" class="section section--cta" data-section="10">
+    <div class="section__container">
+      <div class="section__tag">
+        <span class="tag-num">[09]</span>
+        <span class="tag-label">// JOIN_THE_NETWORK</span>
+      </div>
+      <h2 class="section__headline cta__headline">DEPLOY WITH US.</h2>
+      <p class="cta__subline">PAYGo companies to pilot. Investors and lenders to embed the BUS into financing structures.</p>
+
+      <div class="cta-steps" id="cta-steps">
+        <div class="cta-step">
+          <span class="cta-step__cmd">&gt; 01_engage_bilaterally</span>
+          <span class="cta-step__desc">— share feedback on principles</span>
+        </div>
+        <div class="cta-step">
+          <span class="cta-step__cmd">&gt; 02_join_consultation</span>
+          <span class="cta-step__desc">— Phase 1 design interviews</span>
+        </div>
+        <div class="cta-step">
+          <span class="cta-step__cmd">&gt; 03_signal_intent</span>
+          <span class="cta-step__desc">— non-binding expression of interest</span>
+        </div>
+        <div class="cta-step">
+          <span class="cta-step__cmd">&gt; 04_connect_us</span>
+          <span class="cta-step__desc">— warm intros to lenders, peers</span>
+        </div>
+      </div>
+
+      <div class="cta-contacts">
+        <a href="mailto:kat@catalyst-advisors.com" class="cta-pill">kat@catalyst-advisors.com</a>
+        <a href="mailto:dan@catalyst-advisors.com" class="cta-pill">dan@catalyst-advisors.com</a>
+        <a href="mailto:billy@hyfin.earth" class="cta-pill">billy@hyfin.earth</a>
+      </div>
+
+      <footer class="site-footer">
+        [END_OF_TRANSMISSION] · BUSCO_v3.0.0 · 2026
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+<!-- ===== Version picker (shared across v1/v2/v3) ===== -->
+<nav class="vpick" aria-label="Design versions">
+  <a href="/" data-vpick-link="v1">V1</a>
+  <a href="/v2/" data-vpick-link="v2">V2</a>
+  <a href="/v3/" data-vpick-link="v3">V3</a>
+</nav>
+<style>
+  .vpick {
+    position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+    z-index: 9000;
+    display: flex; gap: 2px; padding: 4px;
+    background: rgba(20,20,20,0.55);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    font-family: 'IBM Plex Mono','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; line-height: 1;
+  }
+  .vpick a {
+    padding: 6px 14px; border-radius: 999px;
+    color: rgba(255,255,255,0.72); text-decoration: none;
+    transition: color .2s ease, background .2s ease;
+  }
+  .vpick a:hover { color: #fff; }
+  .vpick a.is-active { background: rgba(255,255,255,0.2); color: #fff; }
+  @media (max-width: 640px) { .vpick { font-size: 10px; } .vpick a { padding: 6px 10px; } }
+</style>
+<script>
+  (function(){
+    var p = location.pathname.replace(/\/$/, '') || '/';
+    var c = p.indexOf('/v3') === 0 ? 'v3' : p.indexOf('/v2') === 0 ? 'v2' : 'v1';
+    document.querySelectorAll('[data-vpick-link]').forEach(function(a){
+      if (a.getAttribute('data-vpick-link') === c) a.classList.add('is-active');
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="BUSco — an industry-wide back-up servicer for off-grid solar.">
+  <title>BUSco — Issue 001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-label="Site access">
+  <div class="lock-screen__box">
+    <img src="../assets/logo-navy.png" alt="BUSco" class="lock-screen__logo">
+    <p class="lock-screen__label">Enter password to continue</p>
+    <form class="lock-screen__form" id="lock-form" autocomplete="off">
+      <input
+        type="password"
+        id="lock-input"
+        class="lock-screen__input"
+        placeholder="Password"
+        aria-label="Password"
+        autofocus
+      >
+      <button type="submit" class="lock-screen__btn">Enter</button>
+    </form>
+    <p class="lock-screen__error" id="lock-error" aria-live="polite"></p>
+  </div>
+</div>
+
+<!-- ===================== PAGINATION ===================== -->
+<div id="pagination" class="pagination" aria-hidden="true">
+  <span id="pagination-current">001</span>
+  <span class="pagination-sep"> / </span>
+  <span class="pagination-total">010</span>
+</div>
+
+<!-- ===================== MAIN ===================== -->
+<main>
+
+  <!-- ========== SECTION 1: COVER ========== -->
+  <section id="s01" class="section section--cover" data-index="1">
+    <div class="cover__hero-img" style="background-image: url('../assets/hero-bg.jpg');"></div>
+    <div class="cover__scrim"></div>
+    <div class="cover__inner">
+      <div class="cover__top">
+        <img src="../assets/logo-white.png" alt="BUSco" class="cover__logo">
+        <p class="cover__eyebrow mono">ISSUE 001 — DRAFT — INTERNAL</p>
+      </div>
+      <div class="cover__body">
+        <p class="cover__tagline mono">Spearheaded by Catalyst &amp; Hyfin</p>
+        <h1 class="cover__headline">
+          <span class="cover__headline-line">An industry-</span>
+          <span class="cover__headline-line cover__headline-line--indent">wide back-up</span>
+          <span class="cover__headline-line">servicer for</span>
+          <span class="cover__headline-line cover__headline-line--accent">off-grid solar.</span>
+        </h1>
+        <p class="cover__sub">A reliable safety net for PAYGo. Continuity for customers. Protection for capital.</p>
+      </div>
+      <div class="cover__caption">
+        <p class="mono">Photograph by [unknown]. Naserian, Kajiado County, Kenya.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: THE PROBLEM ========== -->
+  <section id="s02" class="section section--problem" data-index="2">
+    <div class="section__inner">
+      <div class="section__label mono">01 — THE VULNERABILITY</div>
+      <div class="problem__pullquote-wrap">
+        <blockquote class="problem__pullquote">
+          When a PAYGo company fails, the damage cascades in five directions.
+        </blockquote>
+      </div>
+      <div class="problem__cascade">
+        <div class="problem__entry js-fade">
+          <span class="problem__num mono">01</span>
+          <div class="problem__content">
+            <h3 class="problem__who">Customers</h3>
+            <p class="problem__what">Total dependency. Lights out. Energy access stripped.</p>
+          </div>
+        </div>
+        <div class="problem__entry js-fade">
+          <span class="problem__num mono">02</span>
+          <div class="problem__content">
+            <h3 class="problem__who">Companies</h3>
+            <p class="problem__what">No safety net. Manageable hurdles become total collapses.</p>
+          </div>
+        </div>
+        <div class="problem__entry js-fade">
+          <span class="problem__num mono">03</span>
+          <div class="problem__content">
+            <h3 class="problem__who">Lenders &amp; investors</h3>
+            <p class="problem__what">Severed cash flows. Stranded assets. Capital loss.</p>
+          </div>
+        </div>
+        <div class="problem__entry js-fade">
+          <span class="problem__num mono">04</span>
+          <div class="problem__content">
+            <h3 class="problem__who">Institutional capital</h3>
+            <p class="problem__what">Default risk blocks the trillions needed.</p>
+          </div>
+        </div>
+        <div class="problem__entry js-fade">
+          <span class="problem__num mono">05</span>
+          <div class="problem__content">
+            <h3 class="problem__who">Governments</h3>
+            <p class="problem__what">Failed companies undermine national electrification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: THE ANSWER ========== -->
+  <section id="s03" class="section section--answer" data-index="3">
+    <div class="section__inner">
+      <div class="section__label mono">02 — THE PROPOSITION</div>
+      <div class="answer__grid">
+        <div class="answer__headline-col">
+          <h2 class="answer__headline js-fade">BUSco.<br>The neutral<br><em>pan-African</em><br>back-up servicer.</h2>
+        </div>
+        <div class="answer__body-col">
+          <p class="answer__body js-fade">A reliable safety net for the entire PAYGo industry. Keeps the lights on. Keeps the cash flowing. Keeps capital protected.</p>
+          <div class="answer__pillars js-fade">
+            <div class="answer__pillar">
+              <span class="mono answer__tag">[PROTECTS]</span>
+              <span class="answer__pillar-text">Cash flow</span>
+            </div>
+            <div class="answer__pillar">
+              <span class="mono answer__tag">[PROTECTS]</span>
+              <span class="answer__pillar-text">Devices</span>
+            </div>
+            <div class="answer__pillar">
+              <span class="mono answer__tag">[PROTECTS]</span>
+              <span class="answer__pillar-text">Field operations</span>
+            </div>
+          </div>
+          <div class="fig-placeholder js-fade" aria-label="Figure 01">
+            <span class="mono">[FIG. 01 — PAYGo ecosystem map]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: THE STAT ========== -->
+  <section id="s04" class="section section--stat" data-index="4">
+    <div class="stat__inner">
+      <p class="stat__pre mono js-fade">TRACK RECORD</p>
+      <div class="stat__number-wrap js-fade">
+        <span class="stat__number">$20B+</span>
+      </div>
+      <div class="stat__body-wrap">
+        <p class="stat__body js-fade">in solar loans backstopped by BUS structures, originated by the Hyfin founding team in North America.</p>
+        <p class="stat__annotation mono js-fade">Now we're bringing that infrastructure<br>to the off-grid sector.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5: HOW IT WORKS ========== -->
+  <section id="s05" class="section section--mechanics" data-index="5">
+    <div class="section__inner">
+      <div class="section__label mono">03 — MECHANICS</div>
+      <h2 class="section__headline js-fade">From standby to active.<br><em>In four phases.</em></h2>
+      <div class="phases__grid">
+        <div class="phase__card js-fade">
+          <div class="phase__roman mono">I.</div>
+          <div class="phase__content">
+            <div class="phase__name">Pre-succession</div>
+            <div class="phase__mode mono">Standby</div>
+            <p class="phase__desc">Triggers, mandates, and step-in rights defined. Data pipelines validated.</p>
+          </div>
+        </div>
+        <div class="phase__card js-fade">
+          <div class="phase__roman mono">II.</div>
+          <div class="phase__content">
+            <div class="phase__name">Activation</div>
+            <div class="phase__mode mono">Transition</div>
+            <p class="phase__desc">Pre-agreed triggers hit: insolvency, covenant breach, PAR threshold.</p>
+          </div>
+        </div>
+        <div class="phase__card js-fade">
+          <div class="phase__roman mono">III.</div>
+          <div class="phase__content">
+            <div class="phase__name">Live</div>
+            <div class="phase__mode mono">Active</div>
+            <p class="phase__desc">BUS assumes full control of data, payments, field operations, call centre.</p>
+          </div>
+        </div>
+        <div class="phase__card js-fade">
+          <div class="phase__roman mono">IV.</div>
+          <div class="phase__content">
+            <div class="phase__name">Resolution</div>
+            <div class="phase__mode mono">Reversion</div>
+            <p class="phase__desc">Portfolio handed back, transferred, or wound down in orderly fashion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6: USE CASES ========== -->
+  <section id="s06" class="section section--usecases" data-index="6">
+    <div class="section__inner">
+      <div class="section__label mono">04 — APPLICATION</div>
+      <h2 class="section__headline js-fade">One BUS.<br><em>Multiple funding structures.</em></h2>
+      <div class="usecases__cols">
+        <div class="usecase__col js-fade">
+          <div class="usecase__era mono">TODAY</div>
+          <div class="usecase__type">On-balance-sheet lending</div>
+          <p class="usecase__desc">Conventional structures used by DFIs, impact investors, and regional development banks. BUS as a lender cushion against operational standstill.</p>
+        </div>
+        <div class="usecase__divider"></div>
+        <div class="usecase__col js-fade">
+          <div class="usecase__era mono">TOMORROW</div>
+          <div class="usecase__type">Off-balance-sheet securitizations</div>
+          <p class="usecase__desc">The path to scale. Securitization unlocks institutional capital. A robust BUS is a prerequisite for institutional investors.</p>
+        </div>
+      </div>
+      <div class="usecases__frontier js-fade">
+        <div class="frontier__item">
+          <span class="mono frontier__tag">[FRONTIER]</span>
+          <span class="frontier__text">M300 / government-financed programs</span>
+        </div>
+        <div class="frontier__item">
+          <span class="mono frontier__tag">[FRONTIER]</span>
+          <span class="frontier__text">Energy as a Service (EaaS)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 7: PRINCIPLES ========== -->
+  <section id="s07" class="section section--principles" data-index="7">
+    <div class="section__inner">
+      <div class="section__label mono">05 — PRINCIPLES</div>
+      <div class="principles__layout">
+        <div class="principles__left">
+          <h2 class="section__headline js-fade">Six commitments<br>to the sector.</h2>
+          <div class="fig-placeholder fig-placeholder--tall js-fade" aria-label="Figure 02">
+            <span class="mono">[FIG. 02 — Governance framework]</span>
+          </div>
+        </div>
+        <div class="principles__right">
+          <ol class="principles__list" type="i">
+            <li class="principles__item js-fade"><span class="principles__roman mono">i.</span><span>Robust capability, minimized cost</span></li>
+            <li class="principles__item js-fade"><span class="principles__roman mono">ii.</span><span>Leverage existing infrastructure</span></li>
+            <li class="principles__item js-fade"><span class="principles__roman mono">iii.</span><span>Universal trust through neutrality</span></li>
+            <li class="principles__item js-fade"><span class="principles__roman mono">iv.</span><span>Built for the sector</span></li>
+            <li class="principles__item js-fade"><span class="principles__roman mono">v.</span><span>Investment-grade credibility</span></li>
+            <li class="principles__item js-fade"><span class="principles__roman mono">vi.</span><span>Lean start-up approach</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 8: CAPABILITIES ========== -->
+  <section id="s08" class="section section--capabilities" data-index="8">
+    <div class="section__inner">
+      <div class="section__label mono">06 — DOMAINS</div>
+      <h2 class="section__headline js-fade">Seven capability<br><em>domains.</em></h2>
+      <div class="caps__list">
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">1.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Portfolio &amp; data access</div>
+            <div class="caps__desc">Customer datasets, real-time API, early warning analytics.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">2.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Software &amp; digital infrastructure</div>
+            <div class="caps__desc">Device control, token continuity, omnichannel comms.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">3.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Financial &amp; payment operations</div>
+            <div class="caps__desc">Wallet rerouting, mobile money, automated reconciliation.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">4.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Hardware &amp; technical assets</div>
+            <div class="caps__desc">Master keys, inventory, logistics.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">5.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Legal &amp; regulatory compliance</div>
+            <div class="caps__desc">BSA, step-in rights, jurisdictional compliance.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">6.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Governance &amp; strategic management</div>
+            <div class="caps__desc">Operations team, SOPs, KPI monitoring.</div>
+          </div>
+        </div>
+        <div class="caps__item js-fade">
+          <div class="caps__num mono">7.</div>
+          <div class="caps__content">
+            <div class="caps__domain">Field &amp; customer support</div>
+            <div class="caps__desc">Local-language call centres, technician network, field collections.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 9: TEAM ========== -->
+  <section id="s09" class="section section--team" data-index="9">
+    <div class="section__inner">
+      <div class="section__label mono">07 — TEAM</div>
+      <h2 class="section__headline js-fade">World-class.<br><em>Industry-tested.</em></h2>
+      <div class="team__profiles">
+        <div class="team__profile js-fade">
+          <div class="team__org">Catalyst Off-Grid Advisors</div>
+          <p class="team__desc">Driving technical design. Most substantive PAYGo BUS scoping work in 2021. Practitioner lens from the PAYGo industry.</p>
+        </div>
+        <div class="team__divider"></div>
+        <div class="team__profile js-fade">
+          <div class="team__org">Hyfin</div>
+          <p class="team__desc">Co-developing the BUS. Founding team pioneered solar securitization in North America — over $20B in loans backstopped by BUS structures.</p>
+        </div>
+      </div>
+      <div class="team__backers js-fade">
+        <div class="fig-placeholder fig-placeholder--banner" aria-label="Backers logo strip">
+          <span class="mono">[INSTITUTIONAL BACKERS — placeholder for logo strip]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 10: GET INVOLVED ========== -->
+  <section id="s10" class="section section--cta" data-index="10">
+    <div class="cta__hero-img" style="background-image: url('../assets/hero-bg.jpg');"></div>
+    <div class="section__inner cta__inner">
+      <div class="section__label mono">08 — JOIN US</div>
+      <h2 class="cta__headline js-fade">We're seeking<br>pilot partners.</h2>
+      <div class="cta__ways js-fade">
+        <div class="cta__way">
+          <span class="cta__num mono">01.</span>
+          <span class="cta__text">Engage bilaterally — share feedback on principles</span>
+        </div>
+        <div class="cta__way">
+          <span class="cta__num mono">02.</span>
+          <span class="cta__text">Join Phase 1 design interviews</span>
+        </div>
+        <div class="cta__way">
+          <span class="cta__num mono">03.</span>
+          <span class="cta__text">Sign a non-binding expression of interest</span>
+        </div>
+        <div class="cta__way">
+          <span class="cta__num mono">04.</span>
+          <span class="cta__text">Connect us to your lenders, peers, service providers</span>
+        </div>
+      </div>
+      <div class="cta__contacts js-fade">
+        <div class="cta__contact">
+          <span class="cta__name">Kat Harrison</span>
+          <a href="mailto:kat@catalyst-advisors.com" class="cta__email mono">kat@catalyst-advisors.com</a>
+        </div>
+        <div class="cta__contact">
+          <span class="cta__name">Dan Murphy</span>
+          <a href="mailto:dan@catalyst-advisors.com" class="cta__email mono">dan@catalyst-advisors.com</a>
+        </div>
+        <div class="cta__contact">
+          <span class="cta__name">Billy Parish</span>
+          <a href="mailto:billy@hyfin.earth" class="cta__email mono">billy@hyfin.earth</a>
+        </div>
+      </div>
+      <footer class="cta__footer js-fade">
+        <p class="mono">BUSCO INTRODUCTORY DRAFT · ISSUE 001 · MAY 2026</p>
+        <img src="../assets/logo-navy.png" alt="BUSco" class="cta__footer-logo">
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+<!-- ===== Version picker (shared across v1/v2/v3) ===== -->
+<nav class="vpick" aria-label="Design versions">
+  <a href="/" data-vpick-link="v1">V1</a>
+  <a href="/v2/" data-vpick-link="v2">V2</a>
+  <a href="/v3/" data-vpick-link="v3">V3</a>
+</nav>
+<style>
+  .vpick {
+    position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+    z-index: 9000;
+    display: flex; gap: 2px; padding: 4px;
+    background: rgba(20,20,20,0.55);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    font-family: 'IBM Plex Mono','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; line-height: 1;
+  }
+  .vpick a {
+    padding: 6px 14px; border-radius: 999px;
+    color: rgba(255,255,255,0.72); text-decoration: none;
+    transition: color .2s ease, background .2s ease;
+  }
+  .vpick a:hover { color: #fff; }
+  .vpick a.is-active { background: rgba(255,255,255,0.2); color: #fff; }
+  @media (max-width: 640px) { .vpick { font-size: 10px; } .vpick a { padding: 6px 10px; } }
+</style>
+<script>
+  (function(){
+    var p = location.pathname.replace(/\/$/, '') || '/';
+    var c = p.indexOf('/v3') === 0 ? 'v3' : p.indexOf('/v2') === 0 ? 'v2' : 'v1';
+    document.querySelectorAll('[data-vpick-link]').forEach(function(a){
+      if (a.getAttribute('data-vpick-link') === c) a.classList.add('is-active');
+    });
+  })();
+</script>
+
+</body>
+</html>

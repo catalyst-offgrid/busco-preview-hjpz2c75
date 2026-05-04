@@ -495,5 +495,43 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="script.js"></script>
+
+  <!-- ===== Version picker (shared across v1/v2/v3) ===== -->
+  <nav class="vpick" aria-label="Design versions">
+    <a href="/" data-vpick-link="v1">V1</a>
+    <a href="/v2/" data-vpick-link="v2">V2</a>
+    <a href="/v3/" data-vpick-link="v3">V3</a>
+  </nav>
+  <style>
+    .vpick {
+      position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+      z-index: 9000;
+      display: flex; gap: 2px; padding: 4px;
+      background: rgba(20,20,20,0.55);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      backdrop-filter: blur(14px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      font-family: 'IBM Plex Mono','JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em; line-height: 1;
+    }
+    .vpick a {
+      padding: 6px 14px; border-radius: 999px;
+      color: rgba(255,255,255,0.72); text-decoration: none;
+      transition: color .2s ease, background .2s ease;
+    }
+    .vpick a:hover { color: #fff; }
+    .vpick a.is-active { background: rgba(255,255,255,0.2); color: #fff; }
+    @media (max-width: 640px) { .vpick { font-size: 10px; } .vpick a { padding: 6px 10px; } }
+  </style>
+  <script>
+    (function(){
+      var p = location.pathname.replace(/\/$/, '') || '/';
+      var c = p.indexOf('/v3') === 0 ? 'v3' : p.indexOf('/v2') === 0 ? 'v2' : 'v1';
+      document.querySelectorAll('[data-vpick-link]').forEach(function(a){
+        if (a.getAttribute('data-vpick-link') === c) a.classList.add('is-active');
+      });
+    })();
+  </script>
 </body>
 </html>
